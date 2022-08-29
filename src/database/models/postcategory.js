@@ -1,5 +1,5 @@
 const PostCategory = (sequelize, DataTypes) => {
-  const PostCategory = sequelize.define("PostCategories", {
+  const PostCategory = sequelize.define("PostCategory", {
     fullName: DataTypes.STRING,
     email: DataTypes.STRING,
   });
