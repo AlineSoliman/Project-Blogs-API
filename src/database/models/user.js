@@ -1,6 +1,10 @@
 const User = (sequelize, DataTypes) => {
   const User = sequelize.define("User", {
-    id: DataTypes.INTEGER,
+    id: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     displayName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
@@ -8,7 +12,6 @@ const User = (sequelize, DataTypes) => {
   }, {
     tableName:'Users',
     timestamps: false,
-    underscored: true
   });
 
   User.associate= (models) => {

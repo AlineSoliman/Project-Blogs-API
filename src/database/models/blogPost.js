@@ -1,6 +1,10 @@
 const BlogPost = (sequelize, DataTypes) => {
   const BlogPost = sequelize.define("BlogPost", {
-    id: DataTypes.INTEGER,
+    id:{
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     userId: DataTypes.INTEGER,
@@ -10,7 +14,6 @@ const BlogPost = (sequelize, DataTypes) => {
     createdAt: 'published',
     updatedAt: 'updated',
     tableName:'BlogPosts',
-    underscored: true
   });
 
   BlogPost.associate = (models) => {
