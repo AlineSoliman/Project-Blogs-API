@@ -16,6 +16,8 @@ const PostCategory = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       references: { model: 'Categories', key: 'id'}
     },
+  }, {
+    timestamps: false,
   });
 
   PostCategory.associate = (models) => {

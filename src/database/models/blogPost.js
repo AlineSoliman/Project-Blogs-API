@@ -7,13 +7,18 @@ const BlogPost = (sequelize, DataTypes) => {
     },
     title: DataTypes.STRING,
     content: DataTypes.STRING,
-    userId: DataTypes.INTEGER,
+    userId: {
+      foreingKey: true,
+      type: DataTypes.INTEGER,
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
+      references: { model: 'Users', key: 'id'},
+    },
     published: DataTypes.DATE,
     updated: DataTypes.DATE
   },  {
     createdAt: 'published',
     updatedAt: 'updated',
-    tableName:'BlogPosts',
   });
 
   BlogPost.associate = (models) => {
