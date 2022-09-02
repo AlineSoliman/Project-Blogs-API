@@ -1,5 +1,6 @@
 require('dotenv').config();
 const app = require('./api');
+const { createCategoryController } = require('./controllers/categoryController');
 require('express-async-errors');
 const { 
   login, 
@@ -16,6 +17,8 @@ app.post('/user', createUserController);
 app.get('/user', verifyJWT, getAllController);
 
 app.get('/user/:id', verifyJWT, getByPkController);
+
+app.post('/categories', verifyJWT, createCategoryController);
 
 // não remova a variável `API_PORT` ou o `listen`
 const port = process.env.API_PORT || 3000;
