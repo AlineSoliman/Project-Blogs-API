@@ -23,4 +23,15 @@ const Joi = require('joi');
     return value;
   };
 
-  module.exports = { validateUser };
+  const validateCategory = (body) => {
+    const validJoiCategory = Joi.object({
+      name: Joi.string().required().messages({
+        'any.required': '400|"name" is required',
+      }), 
+    });
+    const { error, value } = validJoiCategory.validate(body);
+    if (error) throw error;
+    return value;
+  };
+
+  module.exports = { validateUser, validateCategory };
