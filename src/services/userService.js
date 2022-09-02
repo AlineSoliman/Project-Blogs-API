@@ -36,4 +36,11 @@ const getAllService = async () => {
   return result;
 };
 
-module.exports = { loginService, createUserService, getAllService };
+const findByPkService = async (id) => {
+  const result = await User.findByPk(id, {
+    attributes: { exclude: ['password'] },
+  });
+  return result;
+};
+
+module.exports = { loginService, createUserService, getAllService, findByPkService };

@@ -1,4 +1,9 @@
-const { loginService, createUserService, getAllService } = require('../services/userService');
+const { 
+  loginService, 
+  createUserService, 
+  getAllService, 
+  findByPkService,
+} = require('../services/userService');
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -29,4 +34,16 @@ const getAllController = async (req, res, _next) => {
   }
 };
 
-module.exports = { login, createUserController, getAllController };
+const getByPkController = async (req, res, _next) => {
+  const { id } = req.params;
+  try {
+    const result = await findByPkService(id);
+    console.log(result);
+    if (result) return res.status(200).json(result);
+    if (result === null) return res.status(404).send({ message: 'User does not exist' });
+  } catch (error) {
+    res.status(500).json({ message: 'Erro' });
+  }
+};
+
+module.exports = { login, createUserController, getAllController, getByPkController };
