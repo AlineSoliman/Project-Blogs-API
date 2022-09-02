@@ -16,11 +16,8 @@ const Joi = require('joi');
       }),
       image: Joi.string(),
     });
-    const { error, value } = validJoiData.validate(body);
-
+    const { error } = validJoiData.validate(body);
     if (error) throw error;
-
-    return value;
   };
 
   const validateCategory = (body) => {
@@ -29,9 +26,8 @@ const Joi = require('joi');
         'any.required': '400|"name" is required',
       }), 
     });
-    const { error, value } = validJoiCategory.validate(body);
+    const { error } = validJoiCategory.validate(body);
     if (error) throw error;
-    return value;
   };
 
   module.exports = { validateUser, validateCategory };
