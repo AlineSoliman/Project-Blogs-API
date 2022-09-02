@@ -29,4 +29,11 @@ const createUserService = async (body) => {
   return createToken;
 };
 
-module.exports = { loginService, createUserService };
+const getAllService = async () => {
+  const result = await User.findAll({
+    attributes: { exclude: ['password'] },
+  });
+  return result;
+};
+
+module.exports = { loginService, createUserService, getAllService };
