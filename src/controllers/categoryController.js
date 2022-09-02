@@ -1,5 +1,5 @@
 const { validateCategory } = require('../middlewares/userValidation');
-const { createCategoryService } = require('../services/categoryService');
+const { createCategoryService, getCategoriesService } = require('../services/categoryService');
 
 const createCategoryController = async (req, res) => {
   const { body } = req;
@@ -13,4 +13,13 @@ const createCategoryController = async (req, res) => {
   }
 };
 
-module.exports = { createCategoryController };
+const getCategoriesController = async (req, res, _next) => {
+  try {
+    const result = await getCategoriesService();
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json({ message: 'Erro' });
+  }
+};
+
+module.exports = { createCategoryController, getCategoriesController };

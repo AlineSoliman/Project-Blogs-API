@@ -7,4 +7,9 @@ const createCategoryService = async (validate) => {
   return result;
 };
 
-module.exports = { createCategoryService };
+const getCategoriesService = async () => {
+  const result = await Category.findAll();
+  return result;
+};
+
+module.exports = { createCategoryService, getCategoriesService };
